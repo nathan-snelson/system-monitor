@@ -1,0 +1,10 @@
+#logs
+logs
+*.logs
+npm-debug.log*
+
+#build folder
+/build
+
+#dependencies
+/node_modules
