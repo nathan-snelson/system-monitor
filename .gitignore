@@ -6,5 +6,8 @@ npm-debug.log*
 #build folder
 /build
 
+#database folder
+/db
+
 #dependencies
 /node_modules
