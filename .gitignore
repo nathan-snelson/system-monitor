@@ -4,10 +4,10 @@ logs
 npm-debug.log*
 
 #build folder
-build/
+/build
 
 #database folder
-db/
+/db
 
 #dependencies
 /node_modules
