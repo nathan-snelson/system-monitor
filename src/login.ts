@@ -10,7 +10,7 @@ let rl = readline.createInterface({
 
 rl.question('Please enter your username: ', (answer: string) => {
     let isValid: boolean = false;
-    let user;
+    let user: any;
 
     for(let key of Object.keys(db)) {
         user = db[key];
