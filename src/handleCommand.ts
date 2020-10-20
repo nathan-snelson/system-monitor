@@ -1,6 +1,7 @@
 import { showProcessor } from './commands/printProcessor';
 import { showHost } from './commands/showHost';
 import { addUser } from './commands/addUser';
+import { help } from './commands/help';
 
 export const handleCommand = (command: string) => {
     let pieces = command.split(" ");
@@ -20,6 +21,10 @@ export const handleCommand = (command: string) => {
         case 'AU':
         case 'addUser':
             addUser(pieces[1]);
+            break;
+        case 'H':
+        case 'help':
+            help();
             break;
     }
 }
