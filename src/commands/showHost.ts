@@ -2,6 +2,6 @@ import os = require('os');
 
 const machine: string = os.hostname();
 
-export function showHost() {
+export const showHost = () => {
     console.log(`Hostname: ${machine}`);
 }

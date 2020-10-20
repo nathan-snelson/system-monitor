@@ -2,7 +2,7 @@ import { showProcessor } from './commands/printProcessor';
 import { showHost } from './commands/showHost';
 import { addUser } from './commands/addUser';
 
-export function handleCommand(command: string) {
+export const handleCommand = (command: string) => {
     let pieces = command.split(" ");
     
     switch(pieces[0]) {

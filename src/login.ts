@@ -1,7 +1,6 @@
 import readline = require('readline');
 import { handleCommand } from './handleCommand';
-
-const db = require('../db/users.json');
+import * as db from '../db/users.json';
 
 let rl = readline.createInterface({
     input: process.stdin,
@@ -12,14 +11,12 @@ rl.question('Please enter your username: ', (answer: string) => {
     let isValid: boolean = false;
     let user: any;
 
-    for(let key of Object.keys(db)) {
-        user = db[key];
-        
-        if(answer === user.username) {
+    Object.entries(db).forEach(([key,value]) => {        
+        if(answer === value.username) {            
             isValid = true;
-            break;
+            user = value;
         }
-    }
+    });
 
     if(isValid) {
         rl.question('Please enter your passcode: ', (passcode: string) => {

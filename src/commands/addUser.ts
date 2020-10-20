@@ -1,37 +1,40 @@
 import fs = require('fs');
+import * as db from '../../db/users.json';
 
-const db = require('../../db/users.json');
-
-let newUser = {
-    'user': '',
-    'passcode': ''
-}
-
-export function addUser(details: string) {
+export const addUser = (details: string) => {
     let params = details.split(',');
 
     let exists: boolean = false;
     let valid: boolean = false;
+    let desc: boolean = false;
 
-    for(let key of Object.keys(db)) {
-        let user = db[key];
-
-        if(params[0] === user.username) {
+    Object.entries(db).forEach(([key,value]) => {    
+        if(params[0] === value.username) {
             exists = true;
             console.log('Username already exists');
-            break;
         }
-
-        if(!exists) {
-            if(params[1].length < 3) {
-                valid = false;
-                console.log('Passcode is invalid (Too short)');
-            }
-        }        
+    });
+    
+    if(!exists) {
+        if(params[1].length < 3) {
+            valid = false;
+            console.log('Passcode is invalid (Too short)');
+        }
+        else
+        {
+            valid = true;
+        }
     }
 
-    if(exists && valid) {
-        newUser.user = params[0];
-        newUser.passcode = params[1];
+    if(params[2]) {
+        desc = true;
+    }
+
+    if(valid) {
+        let newUser: User = {
+            name: params[0],
+            passcode: params[1],
+            description: (desc) ? params[2] : ""
+        }
     }
 }
