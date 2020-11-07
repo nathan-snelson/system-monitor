@@ -11,7 +11,7 @@
       "resolveJsonModule": true
     },
     "include": [
-      "./src"
+      "./src", "helper.ts"
     ],
     "exclude": [
       "./build",
